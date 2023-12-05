@@ -1,0 +1,93 @@
+
+
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="ArtShareLogothumbnail.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in to ArtShare</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    #animation-canvas {
+      position: relative;
+      top: 20%;
+      z-index: 2;
+    }
+    form {
+      z-index: 4;
+    }
+    a {
+      text-decoration: none;
+    }
+    .cancel {
+            border-radius: 10px;
+            border: none;
+            background-color: #EDD700;
+            color: #808080;
+            opacity: 100%;
+        }
+      .signin {
+            border-radius: 10px;
+            border: none;
+            background-color: #0DDBCF;
+            color: #000000;
+        }
+        .cancel :any-link {
+      color: #808080;
+      background-color: transparent; 
+    }
+        .signin :any-link {
+          color: #000000;
+      background-color: transparent; 
+        }
+        .createspace :any-link {
+          color: #000000;
+      background-color: transparent; 
+        }
+        input:disabled, button:disabled{
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <form action="signin.php">
+    <div class="signup" style="text-align: center;">
+      <h1 style="text-align: center; color: #EDD700;">Sign in</h1>
+      <p style="text-align: center; color: #0DDBCF;">Enter your username and password</p>
+      <hr style="width: 100%; height:2.5px; color: #000000; background-color: #000000; border: none">
+      <label for="email" style="font-size: 19px;"><b>Username</b></label>
+      <br>
+      <input type="text" size="35" placeholder="Enter your username" name="username" required disabled="true">
+      <br>
+      <label for="password" style="font-size: 19px;"><b>Password</b></label>
+      <br>
+      <input type="password" size="35" placeholder="Enter your password" name="password" required disabled="true">
+      <br>
+      <label>
+        <input type="checkbox" checked="checked" name="remember" disabled="true" ><b style="font-size: 18px;"> Remember me</b>
+      </label>
+  
+      <p><b>By signing in, you agree to our <a href="termsconditions.html" style="color:#0DDBCF; font-size: 18px;">Terms & Conditions</a>.</b></p>
+      <p style="font-size: 11px;"><strong>Note: your account will be deleted if you violate the Terms & Conditions.</strong></p>
+      
+      <div class="clearfix">
+        <button type="button" class="cancel"><a href="home.html">Cancel</a></button>
+        <button type="submit" class="signin" disabled="true" >Sign in</button>
+        <p style="font-size: 20px; color: #7b7b7b; outline: #000000;">⚠️Since ArtShare is still in βeta, you can continue to the <a href="createspace.html" class="createspace" style="color: #81ffff;" aria-label="Continue to the ArtShare CreateSpace" title="Continue to the ArtShare CreateSpace">ArtShare CreateSpace</a></p>
+        <p style="font-size: 11px;"><strong>Sign in options will be available soon.</strong></p>
+      <hr style="width: 100%; height:2.5px; color: #000000; background-color: #000000; border: none">
+    </div>
+    </div>
+  </form>
+<footer>
+    <p>&copy;2023 SCCS Robowarriors 2.0. <a href="credits.html" style="color: #EDD700;">Credits</a></p>
+</footer>
+   
+    <div class="background-animation">
+        <canvas id="animation-canvas"></canvas>
+    </div>
+    <script src="background-animation2.js"></script>
+</body>
+</html>

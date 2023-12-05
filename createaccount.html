@@ -1,0 +1,100 @@
+
+
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="ArtShareLogothumbnail.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create your ArtShare account</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+          #animation-canvas {
+      position: relative;
+      top: 20%;
+      z-index: 2;
+    }
+    form {
+      z-index: 4;
+    }
+    a {text-decoration: none;
+        }
+    .cancel {
+            border-radius: 10px;
+            border: none;
+            background-color: #EDD700;
+            color: #808080;
+            opacity: 100%;
+        }
+    
+        .createaccount {
+            border-radius: 10px;
+            border: none;
+            background-color: #0DDBCF;
+            color: #000000;
+        }
+        .cancel :any-link {
+          color: #808080;
+          background-color: transparent; 
+          text-decoration: none;
+        }
+        .createaccount :any-link {
+          color: #000000;
+      background-color: transparent; 
+        }
+        .createspace :any-link {
+          color: #000000;
+      background-color: transparent; 
+        }
+        input:disabled, button:disabled{
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <form action="register.php" method="post" id="input">
+    <div class="signup" style="text-align: center;">
+      <h1 style="text-align: center; color: #EDD700;">Create Account</h1>
+      <p style="text-align: center; color: #0DDBCF;">Fill in this form to create your ArtShare account.</p>
+      <hr style="width: 100%; height:2.5px; color: #000000; background-color: #000000; border: none;">
+      <label for="email" style="font-size: 19px;"><b>Email</b></label>
+      <br>
+      <input type="text" size="35" placeholder="Enter your email address" name="email" required disabled="true">
+      <br>
+      <label for="username" style="font-size: 19px;"><b>Create a Username</b></label>
+      <br>
+      <input type="text" size="35" placeholder="Create a Username" name="Username" required disabled="true">
+      <br>
+      <label for="password" style="font-size: 19px;"><b>Create a Password</b></label>
+      <br>
+      <input type="password" size="35" placeholder="Create a password" name="password"   required disabled="true">
+      <br>
+      <label for="password" style="font-size: 19px;"><b>Re-enter Password</b></label>
+      <br>
+      <input type="password" size="35" placeholder="Re-enter your password" name="password-repeat"   required disabled="true">
+      <br>
+      <label>
+        <input type="checkbox" unchecked="unchecked" name="termsconditions" required disabled="true"><b style="font-size: 18px;"> I agree to and have read the <a href="termsconditions.html" style="color:#0DDBCF">Terms & Conditions</a></b>
+      </label>
+        <p style="font-size: 11px;"><strong>Note: your account will be deleted if you violate the Terms & Conditions.</strong></p>
+      <div class="clearfix">
+        <button type="button" class="cancel" style=" text-decoration: none;"><a href="home.html">Cancel</a></button>
+        <button type="submit" class="createaccount" style="color: #000000;" disabled="true">Create Account</button>
+        <p style="font-size: 20px; color: #7b7b7b; outline: #000000;">⚠️ Since ArtShare is still in βeta, you can continue to the <a href="createspace.html" class="createspace" style="color: #81ffff;" aria-label="Continue to the ArtShare CreateSpace" title="Continue to the ArtShare CreateSpace">ArtShare CreateSpace</a></p>
+        <p style="font-size: 11px; z-index: 12;"><strong>Account options will be available soon.</strong></p>
+      <hr style="width: 100%; height:2.5px; color: #000000; background-color: #000000; border: none; text-decoration: none;">
+    </div>
+    </div>
+  </form>
+<footer>
+    <p><b>&copy;2023 SCCS Robowarriors 2.0. <a href="credits.html" style="color: #EDD700;">Credits</a></b></p>
+</footer>
+   
+    <!-- Background Animation -->
+    <div class="background-animation" style="z-index: -1; bottom: 0; margin-bottom: 30px; position: fixed;">
+        <canvas id="animation-canvas"></canvas>
+    </div>
+    <script src="background-animation2.js"></script>
+</body>
+</html>

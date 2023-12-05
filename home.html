@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="ArtShareLogothumbnail.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" content="height=device-height, initial-scale=1.0">
+    <title>ArtShare: Share your art with the world</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        a {
+            text-decoration: none;
+        }
+        .signin :any-link {
+            color: #000000;
+            cursor: context-menu;
+        }
+        .createaccount :any-link {
+            color: #000000;
+            cursor: context-menu; 
+        }
+        .createspace :any-link {
+            color: #FFFFFF;
+        }
+        .gallery :any-link {
+            color: #FFFFFF;
+        }
+        .signin {
+            border: none;
+            background-color: #EDD700;
+            color: #000000;
+            
+        }
+        .createaccount {
+            
+            border: none;
+            background-color: #0DDBCF;
+            color: #000000;
+        }
+        .createspace {
+            border: none;
+            background-color: #0B3954;
+            color: #FFFFFF;
+        }
+        .createspace :any-link {
+            color: #FFFFFF;
+        }
+        .termsconditions {
+            text-align: center;
+            border: none;
+            background-color: #FF333A;
+            color: #FFFFFF;
+        }
+        .termsconditions :any-link {
+            color: #FFFFFF;
+        }
+        .gallery {
+            border: none;
+            background-color: #53BEA8;
+            color: #FFFFFF;
+        }
+        /* Add this to your CSS */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+    </style>
+    <header>
+        <img src="ArtShareLogo.png" alt="ArtShare Logo" style="height: auto; width: 100%; align-self: center;" class="image">
+        <p style="font-size: 30px; color: #0DDBCF; text-align: center; position: static;">Beta</p>
+    </header>
+</head>
+<body>  
+    <h1 style="font-size: 80px; position:relative; color: #EDD700; text-align: center;" class="Welcome"><b>Welcome to ArtShare!</b></h1>
+    <p style="font-size: 60px; position:relative; color: #0DDBCF; text-align: center;" class="Welcome">Share your art with the world.</p>
+    <div class="button-container">
+        <button type="button" class="signin"><a href="signin.html" title="Sign in (Not Available)">Sign in</a></button>
+        <button type="button" class="createspace"><a href="createspace.html" title="ArtShare CreateSpace">CreateSpace</a></button>
+        <button type="button" class="gallery"><a href="gallery.html" title="ArtShare Gallery">ArtShare Gallery</a></button>
+        <button class="termsconditions"><a href="termsconditions.html" title="Read the Terms & Conditions">Terms & Conditions</a></button>
+        <button type="button" class="createaccount"><a href="createaccount.html" title="Create Account (Not Available)">Create Account</a></button>
+    </div>
+    <div class="background-animation">
+        <canvas id="animation-canvas"></canvas>
+    </div>
+    </main>
+    <div><br></div>
+    <footer>
+        <h5><b>©2023 SCCS RoboWarriors 2.0. <a href="credits.html" style="color: #EDD700;">Credits</a></b></h5>
+    </footer>
+    <script src="background-animation.js"></script>
+</body>
+</html>

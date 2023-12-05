@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" href="ArtShareLogothumbnail.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtShare Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* site colors: 
+#EDD700
+#0DDBCF
+#FF333A
+#0B3954
+*/
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            padding-bottom: 50px; /* Add padding to the bottom of the body to prevent overlap with the footer */
+        }
+        .polaroid {
+            height: auto;
+            width: 90vw;
+            margin: 0px, 0px, 100px, 0px;
+            justify-content: center;
+            display: flex;
+            position: relative;
+            width: 260px;
+            padding: 10px 10px 20px 10px;
+            border: 10px solid #EDD700;
+            border-style: groove;
+            border-radius: 10px;
+            background-color:rgb(13, 219, 209, 0.7);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            margin-bottom: 10px;
+        }
+        .polaroid img {
+            width: 100%;
+            height: auto;
+        }
+        .polaroid p {
+            font-size: 30px;
+            position: absolute;
+            bottom: -40%;
+            width: 100%;
+            text-align: center;
+            color: #000000;
+            background-color: rgb(13, 219, 209, 0.7);
+            background-repeat: inherit;
+        }
+        header {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 13;
+            height: 18px;
+        }
+        header nav ul li {
+            display: inline;
+        }
+
+        header nav ul li a {
+            margin: 0 10px;
+            padding: 10px;
+        }
+        button {
+            border-radius: 10px;
+            border: none;
+            background-color: #EDD700;
+            color: #000000;
+            margin: 10px;
+            position: fixed;
+        }
+        a {
+            text-decoration: none;
+        }
+        /* Center the "Home" link */
+        header nav ul li p {
+            font-size: 18px;
+            text-align: center;
+            top: -30%;
+            cursor: pointer;
+            position: absolute;
+            left: 0;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <header style="z-index: 18;">
+        <nav>
+           <ul>
+            <li><p><a href="home.html"><b style="color: #EDD700;">Home</b></a></p></li>
+           </ul>
+        </nav>
+    </header>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div id="gallery" style="text-align: center; justify-content: center; margin: 0;"></div>
+    <p style="font-size: 70px;"></p>
+    <script>
+        window.onload = function() {
+            var imgSrc = localStorage.getItem('image');
+            var caption = localStorage.getItem('caption');
+
+            if (imgSrc && caption) {
+                var img = document.createElement('img');
+                img.src = imgSrc;
+
+                var p = document.createElement('p');
+                p.textContent = caption;
+
+                var div = document.createElement('div');
+                div.className = 'polaroid';
+                div.appendChild(img);
+                div.appendChild(p);
+
+                document.getElementById('gallery').appendChild(div);
+            }
+        }
+    </script>
+    <footer>
+        <p>©2023 SCCS Robowarriors 2.0. <a href="credits.html" style="color: #EDD700;">Credits</a></p>
+    </footer>
+</body>
+</html>
