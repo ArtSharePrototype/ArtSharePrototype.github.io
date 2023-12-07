@@ -115,7 +115,7 @@
       
           galleryData.forEach(item => {
             var img = document.createElement('img');
-            img.src = 'data:image/png;base64,' + localStorage.getItem(item.imageSrc); // Retrieve image data directly
+            img.src = localStorage.getItem(item.imageSrc); // Retrieve image data directly
       
             var p = document.createElement('p');
             p.textContent = item.caption;
