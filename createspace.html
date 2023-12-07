@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" href="https://artshareprototype.github.io/ArtShareLogothumbnail.png" type="image/x-icon">
+    <link rel="icon" href="ArtShareLogothumbnail.png" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ArtShare CreateSpace</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         ::placeholder {
-    color: #FFFFFF;
-    opacity: 1;
-    }
-
-    ::-ms-input-placeholder {
-    color: #FFFFFF;
-    }
-    ::-webkit-input-placeholder {
-    color: #FFFFFF;
-    }
+            color: #FFFFFF;
+            opacity: 1;
+        }
+        ::-ms-input-placeholder {
+            color: #FFFFFF;
+        }
+        ::-webkit-input-placeholder {
+            color: #FFFFFF;
+        }
         #caption {
             width: 30vw;
             height: 30px;
@@ -41,7 +40,6 @@
         header nav ul li {
             display: inline;
         }
-
         header nav ul li a {
             margin: 0 10px;
             padding: 10px;
@@ -127,30 +125,41 @@
 
                 reader.readAsDataURL(file);
             }
+
             function post() {
                 var fileInput = document.getElementById('SelectFile');
                 var file = fileInput.files[0];
                 var caption = document.getElementById('caption').value;
 
-            if (!caption) {
-                alert('Please create a title for your art before posting.');
-                return;
-            }
-            if (!file) {
-                alert('Please upload your art before posting.');
-                return;
-            }
+                if (!caption) {
+                    alert('Please create a caption for your art before posting.');
+                    return;
+                }
+                if (!file) {
+                    alert('Please upload your art before posting.');
+                    return;
+                }
 
-            var reader = new FileReader();
-            reader.onloadend = function() {
-                localStorage.setItem('image', reader.result);
-                localStorage.setItem('caption', caption);
-                localStorage.setItem('location', file.location);
-                alert(file.location);
-                window.location.href = 'gallery.html';
+                var formData = new FormData();
+                formData.append('image', file);
+                formData.append('caption', caption);
+
+                fetch('/galleryImages', {
+                    method: 'POST',
+                    body: formData,
+                })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = 'gallery.html';
+                    } else {
+                        alert('Error uploading art. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An unexpected error occurred. Please try again.');
+                });
             }
-        }
-reader.readAsDataURL(file);
         </script>
     </main>
     <footer>
