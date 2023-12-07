@@ -15,6 +15,7 @@ button {
     border-radius: 20px;
 }
 html, body {
+    text-shadow: 1px 1px #FFFFFF;
     background-color: #000000;
     text-decoration: none;
     font-family: 'Arial Rounded MT Regular', Arial, sans-serif;
