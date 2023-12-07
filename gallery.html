@@ -109,31 +109,30 @@
 
     <script>
         window.onload = function() {
-            var galleryData = JSON.parse(localStorage.getItem('galleryData')) || [];
-            var galleryContainer = document.getElementById('gallery');
-
-            galleryData.forEach((item, index) => {
-                var img = document.createElement('img');
-                img.src = 'galleryImages/' + item.imageSrc;
-
-                var p = document.createElement('p');
-                p.textContent = item.caption;
-
-                var div = document.createElement('div');
-                div.className = 'polaroid';
-                div.appendChild(img);
-                div.appendChild(p);
-
-                // Add a large spacer between images
-                if (index !== 0) {
-                    var spacer = document.createElement('div');
-                    spacer.style.height = '100px'; // Set the height of the spacer as needed
-                    galleryContainer.appendChild(spacer);
-                }
-
-                galleryContainer.appendChild(div);
-            });
+          var galleryData = JSON.parse(localStorage.getItem('galleryData')) || [];
+          var galleryContainer = document.getElementById('gallery');
+      
+          galleryData.forEach(item => {
+            var img = document.createElement('img');
+            img.src = 'data:image/png;base64,' + localStorage.getItem(item.imageSrc); // Retrieve image data directly
+      
+            var p = document.createElement('p');
+            p.textContent = item.caption;
+      
+            var div = document.createElement('div');
+            div.className = 'polaroid';
+            div.appendChild(img);
+            div.appendChild(p);
+      
+            // Add a large spacer between images
+            var spacer = document.createElement('div');
+            spacer.style.height = '50px'; // Set the height of the spacer as needed
+            galleryContainer.appendChild(spacer);
+      
+            galleryContainer.appendChild(div);
+          });
         }
-    </script>
+      </script>
+      
 </body>
 </html>

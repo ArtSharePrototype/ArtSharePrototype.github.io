@@ -140,12 +140,17 @@
               }
           
               var galleryData = JSON.parse(localStorage.getItem('galleryData')) || [];
-              galleryData.push({ imageSrc: file.name, caption: caption });
+              var imageData = canvas.toDataURL(); // Convert canvas content to base64 data URL
+              var imageFileName = 'image_' + Date.now() + '.png'; // Generate a unique filename
+              galleryData.push({ imageSrc: imageFileName, caption: caption });
+          
               localStorage.setItem('galleryData', JSON.stringify(galleryData));
+              localStorage.setItem(imageFileName, imageData); // Store image data with a unique key
           
               window.location.href = 'gallery.html';
             }
           </script>
+          
           
     </main>
     <footer>
