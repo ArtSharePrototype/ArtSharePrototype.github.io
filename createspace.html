@@ -127,29 +127,30 @@
 
                 reader.readAsDataURL(file);
             }
+            function post() {
+                var fileInput = document.getElementById('SelectFile');
+                var file = fileInput.files[0];
+                var caption = document.getElementById('caption').value;
 
-            function post() {var fileInput = document.getElementById('SelectFile');
-var file = fileInput.files[0];
-var caption = document.getElementById('caption').value;
-
-    if (!caption) {
-        alert('Please create a caption for your art before posting.');
-        return;
-    }
-    if (!file) {
-        alert('Please upload your art before posting.');
-        return;
-    }
-
-    var reader = new FileReader();
-    reader.onloadend = function() {
-        localStorage.setItem('image', reader.result);
-        localStorage.setItem('caption', caption);
-        window.location.href = 'gallery.html';
-    }
-reader.readAsDataURL(file);
-
+            if (!caption) {
+                alert('Please create a title for your art before posting.');
+                return;
             }
+            if (!file) {
+                alert('Please upload your art before posting.');
+                return;
+            }
+
+            var reader = new FileReader();
+            reader.onloadend = function() {
+                localStorage.setItem('image', reader.result);
+                localStorage.setItem('caption', caption);
+                localStorage.setItem('location', file.location);
+                alert(file.location);
+                window.location.href = 'gallery.html';
+            }
+        }
+reader.readAsDataURL(file);
         </script>
     </main>
     <footer>
