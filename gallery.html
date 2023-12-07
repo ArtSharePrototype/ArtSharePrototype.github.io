@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <link rel="icon" href="ArtShareLogothumbnail.png" type="image/x-icon">
     <meta charset="UTF-8">
@@ -7,6 +7,12 @@
     <title>ArtShare Gallery</title>
     <link rel="stylesheet" href="styles.css">
     <style>
+        /* site colors: 
+#EDD700
+#0DDBCF
+#FF333A
+#0B3954
+*/
         body {
             display: flex;
             flex-direction: column;
@@ -14,7 +20,7 @@
             justify-content: center;
             height: 100vh;
             margin: 0;
-            padding-bottom: 50px;
+            padding-bottom: 50px; /* Add padding to the bottom of the body to prevent overlap with the footer */
         }
         .polaroid {
             height: auto;
@@ -28,7 +34,7 @@
             border: 10px solid #EDD700;
             border-style: groove;
             border-radius: 10px;
-            background-color: rgb(13, 219, 209, 0.7);
+            background-color:rgb(13, 219, 209, 0.7);
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
             margin-bottom: 10px;
         }
@@ -59,9 +65,21 @@
         header nav ul li {
             display: inline;
         }
+
         header nav ul li a {
             margin: 0 10px;
             padding: 10px;
+        }
+        button {
+            border-radius: 10px;
+            border: none;
+            background-color: #EDD700;
+            color: #000000;
+            margin: 10px;
+            position: fixed;
+        }
+        a {
+            text-decoration: none;
         }
         /* Center the "Home" link */
         header nav ul li p {
@@ -83,36 +101,40 @@
             </ul>
         </nav>
     </header>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+
     <div id="gallery" style="text-align: center; justify-content: center; margin: 0;"></div>
-    <p style="font-size: 70px;"></p>
-    <script>
-        window.onload = function() {
-          var galleryData = JSON.parse(localStorage.getItem('galleryData')) || [];
-      
-          galleryData.forEach(item => {
-            var img = document.createElement('img');
-            img.src = 'galleryImages/' + item.imageSrc;
-      
-            var p = document.createElement('p');
-            p.textContent = item.caption;
-      
-            var div = document.createElement('div');
-            div.className = 'polaroid';
-            div.appendChild(img);
-            div.appendChild(p);
-      
-            document.getElementById('gallery').appendChild(div);
-          });
-        }
-      </script>
-      
+
     <footer>
         <p>©2023 SCCS Robowarriors 2.0. <a href="credits.html" style="color: #EDD700;">Credits</a></p>
     </footer>
+
+    <script>
+        window.onload = function() {
+            var galleryData = JSON.parse(localStorage.getItem('galleryData')) || [];
+            var galleryContainer = document.getElementById('gallery');
+
+            galleryData.forEach((item, index) => {
+                var img = document.createElement('img');
+                img.src = 'galleryImages/' + item.imageSrc;
+
+                var p = document.createElement('p');
+                p.textContent = item.caption;
+
+                var div = document.createElement('div');
+                div.className = 'polaroid';
+                div.appendChild(img);
+                div.appendChild(p);
+
+                // Add a large spacer between images
+                if (index !== 0) {
+                    var spacer = document.createElement('div');
+                    spacer.style.height = '50px'; // Set the height of the spacer as needed
+                    galleryContainer.appendChild(spacer);
+                }
+
+                galleryContainer.appendChild(div);
+            });
+        }
+    </script>
 </body>
 </html>
