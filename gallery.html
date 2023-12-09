@@ -22,9 +22,8 @@
             margin: 0 auto 100px auto; /* Center the polaroid */
             justify-content: center;
             display: flex;
-            flex-direction: column; /* Adjusted to make caption appear below the image */
-            align-items: center;
             position: relative;
+            width: 260px;
             padding: 10px 10px 20px 10px;
             border: 10px solid #EDD700;
             border-style: groove;
@@ -38,12 +37,14 @@
             height: auto;
         }
         .polaroid p {
-            font-size: 20px; /* Adjusted font size */
+            font-size: 30px;
+            position: absolute;
+            bottom: -30%;
+            width: 100%;
+            text-align: center;
             color: #000000;
             background-color: rgb(13, 219, 209, 0.7);
             background-repeat: inherit;
-            margin-top: 10px; /* Added margin to separate image and caption */
-            text-align: center;
         }
         header {
             background-color: rgba(255, 255, 255, 0.7);
@@ -98,11 +99,15 @@
     <div id="gallery" style="text-align: center; justify-content: center; margin: 0;">
         <div id="imageContainer" class="polaroid">
             <img id="currentImage" src="" style="width: 100%; height: auto;">
-            <p id="caption"></p> <!-- Added caption element -->
+            <p id="currentCaption" style="font-size: 30px;"></p>
         </div>
         <div>
-            <button onclick="showPrevImage()" style="color: #EDD700; border-radius: 50%; width: 50px; height: 50px; left: 10%; font-size: 14pt;"><p style="color: #FFFFFF; font-size: 14pt;">&laquo;</p></button>
-            <button onclick="showNextImage()" style="color: #EDD700; border-radius: 50%; width: 50px; height: 50px; right: 10%; font-size: 14pt;"><p style="color: #FFFFFF; font-size: 14pt;">&raquo;</p></button>
+            <button onclick="showPrevImage()" style="color: #EDD700; border-radius: 50%; width: 50px; height: 50px; left: 10%; font-size: 14pt;">
+                <p style="color: #FFFFFF; font-size: 14pt;">&laquo;</p>
+            </button>
+            <button onclick="showNextImage()" style="color: #EDD700; border-radius: 50%; width: 50px; height: 50px; right: 10%; font-size: 14pt;">
+                <p style="color: #FFFFFF; font-size: 14pt;">&raquo;</p>
+            </button>
         </div>
     </div>
     <div style="height: 2000px; position: absolute;"></div>
@@ -115,39 +120,29 @@
             var galleryData = JSON.parse(localStorage.getItem('galleryData')) || [];
             var currentImageIndex = 0;
             var currentImageElement = document.getElementById('currentImage');
-            var captionElement = document.getElementById('caption');
-    
+            var currentCaptionElement = document.getElementById('currentCaption');
+
             function showImage(index) {
                 var item = galleryData[index];
                 if (item) {
                     currentImageElement.src = localStorage.getItem(item.imageSrc);
-                    captionElement.textContent = item.caption;
+                    currentCaptionElement.textContent = item.caption;
                 }
             }
-    
+
             function showPrevImage() {
                 currentImageIndex = (currentImageIndex - 1 + galleryData.length) % galleryData.length;
                 showImage(currentImageIndex);
             }
-    
+
             function showNextImage() {
                 currentImageIndex = (currentImageIndex + 1) % galleryData.length;
                 showImage(currentImageIndex);
             }
-    
+
             // Initial display
             showImage(currentImageIndex);
-    
-            // Event listeners for arrow keys
-            document.addEventListener('keydown', function(event) {
-                if (event.key === 'ArrowLeft') {
-                    showPrevImage();
-                } else if (event.key === 'ArrowRight') {
-                    showNextImage();
-                }
-            });
         }
     </script>
-    
 </body>
 </html>
