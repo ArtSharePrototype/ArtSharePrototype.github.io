@@ -7,12 +7,6 @@
     <title>ArtShare Gallery</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* site colors: 
-#EDD700
-#0DDBCF
-#FF333A
-#0B3954
-*/
         body {
             display: flex;
             flex-direction: column;
@@ -25,7 +19,7 @@
         .polaroid {
             height: auto;
             width: 90vw;
-            margin: 0px, 0px, 100px, 0px;
+            margin: 0 auto 100px auto; /* Center the polaroid */
             justify-content: center;
             display: flex;
             position: relative;
@@ -102,7 +96,15 @@
         </nav>
     </header>
     <div style="height: 2000px; position: absolute;"></div>
-    <div id="gallery" style="text-align: center; justify-content: center; margin: 0;"></div>
+    <div id="gallery" style="text-align: center; justify-content: center; margin: 0;">
+        <div id="imageContainer" class="polaroid">
+            <img id="currentImage" src="" style="width: 100%; height: auto;">
+        </div>
+        <div>
+            <button onclick="showPrevImage()">Previous</button>
+            <button onclick="showNextImage()">Next</button>
+        </div>
+    </div>
     <div style="height: 2000px; position: absolute;"></div>
     <footer>
         <p>&copy;2023 SCCS Robowarriors 2.0. <a href="credits.html" style="color: #EDD700;">Credits</a></p>
@@ -110,30 +112,30 @@
 
     <script>
         window.onload = function() {
-          var galleryData = JSON.parse(localStorage.getItem('galleryData')) || [];
-          var galleryContainer = document.getElementById('gallery');
-      
-          galleryData.forEach(item => {
-            var img = document.createElement('img');
-            img.src = localStorage.getItem(item.imageSrc); // Retrieve image data directly
-      
-            var p = document.createElement('p');
-            p.textContent = item.caption;
-      
-            var div = document.createElement('div');
-            div.className = 'polaroid';
-            div.appendChild(img);
-            div.appendChild(p);
-      
-            // Add a large spacer between images
-            var spacer = document.createElement('div');
-            spacer.style.height = '200px'; // Set the height of the spacer as needed
-            galleryContainer.appendChild(spacer);
-      
-            galleryContainer.appendChild(div);
-          });
+            var galleryData = JSON.parse(localStorage.getItem('galleryData')) || [];
+            var currentImageIndex = 0;
+            var currentImageElement = document.getElementById('currentImage');
+
+            function showImage(index) {
+                var item = galleryData[index];
+                if (item) {
+                    currentImageElement.src = localStorage.getItem(item.imageSrc);
+                }
+            }
+
+            function showPrevImage() {
+                currentImageIndex = (currentImageIndex - 1 + galleryData.length) % galleryData.length;
+                showImage(currentImageIndex);
+            }
+
+            function showNextImage() {
+                currentImageIndex = (currentImageIndex + 1) % galleryData.length;
+                showImage(currentImageIndex);
+            }
+
+            // Initial display
+            showImage(currentImageIndex);
         }
-      </script>
-      
+    </script>
 </body>
 </html>
