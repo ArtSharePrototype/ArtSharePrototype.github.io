@@ -7,10 +7,6 @@
     <title>ArtShare Gallery</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        button {
-            z-index: 15;
-            position: static;
-        }
         body {
             display: flex;
             flex-direction: column;
@@ -76,6 +72,16 @@
             color: #000000;
             margin: 10px;
             position: fixed;
+            width: 50px;
+            height: 50px;
+            font-size: 14pt;
+            text-align: center;
+        }
+        button.left {
+            left: 10%;
+        }
+        button.right {
+            right: 10%;
         }
         a {
             text-decoration: none;
@@ -107,12 +113,8 @@
             <p id="currentCaption" style="font-size: 30px;"></p>
         </div>
         <div>
-            <button onclick="showPrevImage()" style="color: #EDD700; border-radius: 50%; width: 50px; height: 50px; left: 10%; font-size: 50pt; text-align: center;">
-                <p style="color: #FFFFFF; font-size: 14pt;">&laquo;</p>
-            </button>
-            <button onclick="showNextImage()" style="color: #EDD700; border-radius: 50%; width: 50px; height: 50px; right: 10%; font-size: 50pt; text-align: center;">
-                <p style="color: #FFFFFF; font-size: 14pt;">&raquo;</p>
-            </button>
+            <button class="left" onclick="showPrevImage()" style="color: #EDD700; border-radius: 50%; font-size: 14pt;">&laquo;</button>
+            <button class="right" onclick="showNextImage()" style="color: #EDD700; border-radius: 50%; font-size: 14pt;">&raquo;</button>
         </div>
     </div>
     <div style="height: 2000px; position: absolute;"></div>
@@ -122,8 +124,8 @@
 
     <script>
         window.onload = function() {
-            document.querySelector('button[onclick="showPrevImage()"]').addEventListener('click', showPrevImage);
-            document.querySelector('button[onclick="showNextImage()"]').addEventListener('click', showNextImage);
+            document.querySelector('button.left').addEventListener('click', showPrevImage);
+            document.querySelector('button.right').addEventListener('click', showNextImage);
             var galleryData = JSON.parse(localStorage.getItem('galleryData')) || [];
             var currentImageIndex = 0;
             var currentImageElement = document.getElementById('currentImage');
