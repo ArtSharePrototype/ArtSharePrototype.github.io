@@ -37,6 +37,7 @@ main {
 }
 
 footer {
+    font-size: 12pt;
     color: #000000;
     position: fixed;
     bottom: 0;
