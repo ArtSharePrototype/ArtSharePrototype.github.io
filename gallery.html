@@ -122,6 +122,8 @@
 
     <script>
         window.onload = function() {
+            document.querySelector('button[onclick="showPrevImage()"]').addEventListener('click', showPrevImage);
+            document.querySelector('button[onclick="showNextImage()"]').addEventListener('click', showNextImage);
             var galleryData = JSON.parse(localStorage.getItem('galleryData')) || [];
             var currentImageIndex = 0;
             var currentImageElement = document.getElementById('currentImage');
