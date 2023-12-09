@@ -7,6 +7,9 @@
     <title>ArtShare Gallery</title>
     <link rel="stylesheet" href="styles.css">
     <style>
+        button {
+            z-index: 15;
+        }
         body {
             display: flex;
             flex-direction: column;
@@ -17,8 +20,9 @@
             padding-bottom: 50px; /* Add padding to the bottom of the body to prevent overlap with the footer */
         }
         .polaroid {
+            z-index: 10;
             height: auto;
-            width: 90vw;
+            width: 50vw;
             margin: 0 auto 100px auto; /* Center the polaroid */
             justify-content: center;
             display: flex;
@@ -33,7 +37,8 @@
             margin-bottom: 10px;
         }
         .polaroid img {
-            width: 100%;
+            max-width: 50%;
+            max-height: 80%;
             height: auto;
         }
         .polaroid p {
