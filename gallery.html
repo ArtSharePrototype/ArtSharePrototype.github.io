@@ -8,8 +8,30 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         button {
+            border: none;
             z-index: 15;
-            position: static;
+            position: fixed;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            background-color: #EDD700;
+            text-align: center;
+        }
+        button.left {
+            left: 10%;
+        }
+        button.right {
+            right: 10%;
+        }
+        button p {
+            color: #FF333A;
+            font-size: 50px;
+            text-align: center;
+            position: relative;
+            bottom: 30px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 17;
         }
         body {
             display: flex;
@@ -18,13 +40,13 @@
             justify-content: center;
             height: 100vh;
             margin: 0;
-            padding-bottom: 50px; /* Add padding to the bottom of the body to prevent overlap with the footer */
+            padding-bottom: 50px;
         }
         .polaroid {
             z-index: 10;
             height: auto;
             width: 90vw;
-            margin: 0 auto 100px auto; /* Center the polaroid */
+            margin: 0 auto 100px auto;
             justify-content: center;
             display: flex;
             position: relative;
@@ -64,18 +86,9 @@
         header nav ul li {
             display: inline;
         }
-
         header nav ul li a {
             margin: 0 10px;
             padding: 10px;
-        }
-        button {
-            border-radius: 10px;
-            border: none;
-            background-color: #EDD700;
-            color: #000000;
-            margin: 10px;
-            position: fixed;
         }
         a {
             text-decoration: none;
@@ -106,11 +119,11 @@
             <p id="currentCaption" style="font-size: 30px;"></p>
         </div>
         <div style="position: fixed; bottom: 100px;">
-            <button onclick="showPrevImage()" style="color: #EDD700; border-radius: 50%; width: 50px; height: 50px; left: 10%; font-size: 50pt; text-align: center;">
-                <p style="color: #FFFFFF; font-size: 20px; text-align: center; z-index: 17;">&laquo;</p>
+            <button class="left" onclick="showPrevImage()">
+                <p>&laquo;</p>
             </button>
-            <button onclick="showNextImage()" style="color: #EDD700; border-radius: 50%; width: 50px; height: 50px; right: 10%; font-size: 50pt; text-align: center;">
-                <p style="color: #FFFFFF; font-size: 20px; text-align: center; z-index: 17;">&raquo;</p>
+            <button class="right" onclick="showNextImage()">
+                <p>&raquo;</p>
             </button>
         </div>
     </div>
@@ -121,8 +134,8 @@
 
     <script>
         window.onload = function() {
-            document.querySelector('button[onclick="showPrevImage()"]').addEventListener('click', showPrevImage);
-            document.querySelector('button[onclick="showNextImage()"]').addEventListener('click', showNextImage);
+            document.querySelector('button.left').addEventListener('click', showPrevImage);
+            document.querySelector('button.right').addEventListener('click', showNextImage);
             var galleryData = JSON.parse(localStorage.getItem('galleryData')) || [];
             var currentImageIndex = 0;
             var currentImageElement = document.getElementById('currentImage');
