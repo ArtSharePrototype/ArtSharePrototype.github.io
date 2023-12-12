@@ -138,11 +138,11 @@
                 alert('Please upload your art before posting.');
                 return;
               }
-              alert('If you are not automatically redirected to the ArtShare Gallery, please disable content blockers or enable javascript. This ensures that your art will appear in the Gallery. If the issue persists, please try a different web browser or upload your art in a different file format, like .png or .jpg.')
               var galleryData = JSON.parse(localStorage.getItem('galleryData')) || [];
               var imageData = canvas.toDataURL(); // Convert canvas content to base64 data URL
               var imageFileName = 'image_' + Date.now() + '.png'; // Generate a unique filename
               galleryData.push({ imageSrc: imageFileName, caption: caption });
+              alert('If you are not automatically redirected to the ArtShare Gallery, please disable content blockers or enable javascript. This ensures that your art will appear in the Gallery. If the issue persists, please try a different web browser or upload your art in a different file format, like .png or .jpg.')
           
               localStorage.setItem('galleryData', JSON.stringify(galleryData));
               localStorage.setItem(imageFileName, imageData); // Store image data with a unique key
